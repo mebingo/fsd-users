@@ -16,14 +16,14 @@ import com.ibm.users.utils.ResponseBean;
 public class RoleAccessTestController {
 
 	  // for admin role only
-	  @RequestMapping(value = "smc/secure/admin", method = RequestMethod.GET)
+	  @RequestMapping(value = "fsd/secure/admin", method = RequestMethod.GET)
 	  @ResponseBody
 	  public ResponseEntity<ResponseBean> authenticatedAdmin() throws Exception {
 	      return ResponseEntity.ok().body(new ResponseBean(OK.value(), OK.getReasonPhrase()).data("AUTHENTICATED - ADMIN VERIFIED"));
 	  }
 	  
 	  // for both admin and user roles
-	  @RequestMapping(value = "smc/secure/user", method = RequestMethod.GET)
+	  @RequestMapping(value = "fsd/secure/user", method = RequestMethod.GET)
 	  @ResponseBody
 	  public ResponseEntity<ResponseBean> authenticatedUser() throws Exception {
 	      return ResponseEntity.ok().body(new ResponseBean(OK.value(), OK.getReasonPhrase()).data("AUTHENTICATED - USER VERIFIED"));

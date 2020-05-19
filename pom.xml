@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.ibm</groupId>
-	<artifactId>smcusers</artifactId>
+	<artifactId>fsdusers</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>fsdsmc</name>
-	<description>smc project for users</description>
+	<name>fsd</name>
+	<description>fsd project for users</description>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

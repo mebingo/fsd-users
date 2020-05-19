@@ -12,9 +12,9 @@ import java.io.IOException;
 import static org.springframework.http.HttpStatus.UNAUTHORIZED;
 
 @Component
-public class SmcAuthenticationEntryPoint implements AuthenticationEntryPoint {
+public class FsdAuthenticationEntryPoint implements AuthenticationEntryPoint {
 	
-	private static Logger logger = LoggerFactory.getLogger(SmcAccessDeniedHandler.class);
+	private static Logger logger = LoggerFactory.getLogger(FsdAccessDeniedHandler.class);
 	
     @Override
     public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException e) throws IOException, ServletException {

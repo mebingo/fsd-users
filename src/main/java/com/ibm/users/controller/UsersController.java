@@ -24,7 +24,6 @@ import org.slf4j.LoggerFactory;
 
 @CrossOrigin
 @RestController
-//@RequestMapping("api/smc/users")
 public class UsersController {
 
   private static Logger logger = LoggerFactory.getLogger(UsersController.class);
@@ -83,7 +82,7 @@ public class UsersController {
 //		  return ResponseEntity.ok().body(CommonResult.build(Const.COMMONRESULT_OK_CODE, "User have confirmed!"));
 		  System.out.println("发送html文本文件-发生成功");
 		  logger.error("User have confirmed!");
-		  return "<a href='"+ loginlink +"'>please click here to login SMC system</a>";
+		  return "<a href='"+ loginlink +"'>please click here to login FSD system</a>";
 	  }
 	  return "User confirm action failed!";
 //	  return ResponseEntity.ok().body(CommonResult.build(Const.COMMONRESULT_ERROR_CODE, "User confirm action failed!"));

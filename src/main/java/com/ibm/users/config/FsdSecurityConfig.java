@@ -14,17 +14,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.ibm.users.filters.JwtAuthenticationTokenFilter;
-import com.ibm.users.handler.SmcAccessDeniedHandler;
-import com.ibm.users.handler.SmcAuthenticationEntryPoint;
+import com.ibm.users.handler.FsdAccessDeniedHandler;
+import com.ibm.users.handler.FsdAuthenticationEntryPoint;
 
 @Configuration
 @EnableWebSecurity
-public class SmcSecurityConfig extends WebSecurityConfigurerAdapter {
+public class FsdSecurityConfig extends WebSecurityConfigurerAdapter {
 
   @Autowired
-  private SmcAuthenticationEntryPoint smcAuthenticationEntryPoint;
+  private FsdAuthenticationEntryPoint fsdAuthenticationEntryPoint;
   @Autowired
-  private SmcAccessDeniedHandler smcAccessDeniedHandler;
+  private FsdAccessDeniedHandler fsdAccessDeniedHandler;
   @Autowired
   private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
@@ -43,13 +43,12 @@ public class SmcSecurityConfig extends WebSecurityConfigurerAdapter {
   protected void configure(HttpSecurity httpSecurity) throws Exception {
       httpSecurity.csrf().disable() // diable csrf
 	    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) // use JWT，don't create session
-	    .and().exceptionHandling().accessDeniedHandler(smcAccessDeniedHandler).authenticationEntryPoint(smcAuthenticationEntryPoint) //
+	    .and().exceptionHandling().accessDeniedHandler(fsdAccessDeniedHandler).authenticationEntryPoint(fsdAuthenticationEntryPoint) //
 	    .and().authorizeRequests() // enable authorize HttpServletRequest
 	    .antMatchers("/login").permitAll() // permit for login
 	    .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()  // 给所有预请求方法放行
 	    .antMatchers("/admin/**").hasRole("admin") // only allowed for role "admin" case-sensitive
-//	    .antMatchers("api/smc/secure/user/**").hasAnyRole("admin", "user") // only allowed for roles "admin", "user" case-sensitive
-	    .antMatchers("/signup").permitAll() // permit for sign up
+        .antMatchers("/signup").permitAll() // permit for sign up
 	    .antMatchers("/confirmed/**").permitAll() // permit for confirm user
 	    .anyRequest().authenticated() // need authorize for all the others
 	    .and().addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class) // JWT based security filter

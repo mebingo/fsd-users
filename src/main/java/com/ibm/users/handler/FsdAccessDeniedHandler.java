@@ -13,9 +13,9 @@ import java.io.IOException;
 import static org.springframework.http.HttpStatus.FORBIDDEN;
 
 @Component
-public class SmcAccessDeniedHandler implements AccessDeniedHandler {
+public class FsdAccessDeniedHandler implements AccessDeniedHandler {
 	
-	private static Logger logger = LoggerFactory.getLogger(SmcAccessDeniedHandler.class);
+	private static Logger logger = LoggerFactory.getLogger(FsdAccessDeniedHandler.class);
 	  
 	@Override
 	public void handle(HttpServletRequest request, HttpServletResponse response, AccessDeniedException e) throws IOException, ServletException {

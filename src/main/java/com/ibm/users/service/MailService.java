@@ -33,11 +33,11 @@ public class MailService {
     public void sendSimpleEmail(){
         try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("liker007@163.com");
-            message.setTo("xuexp@cn.ibm.com");
+            message.setFrom("ssn.717@163.com");
+            message.setTo("snshang@cn.ibm.com");
             message.setSubject("hello");
             message.setText("helloha");
-            message.setCc("liker007@163.com");
+            message.setCc("ssn.717@163.com");
             mailSender.send(message);
 
         }catch (Exception e){
@@ -57,10 +57,10 @@ public class MailService {
 //        try {
     	MimeMessage mimeMessage = javaMailSender.createMimeMessage();
         MimeMessageHelper messageHelper = new MimeMessageHelper(mimeMessage);
-            messageHelper.setFrom("liker007@163.com");
+            messageHelper.setFrom("ssn.717@163.com");
             messageHelper.setTo(email);
-            messageHelper.setCc("liker007@163.com");
-            messageHelper.setSubject("Welcome to SMC system");
+            messageHelper.setCc("ssn.717@163.com");
+            messageHelper.setSubject("Welcome to FSD system");
             messageHelper.setText("<a href='"+ maillink + username + "'>please click here to confirm your sign up!</a>", true);
             mailSender.send(mimeMessage);
             System.out.println("发送html文本文件-成功");
@@ -77,11 +77,11 @@ public class MailService {
     public void sendNewPasswordEmail(String email, String newpassword){
 //        try {
             SimpleMailMessage message = new SimpleMailMessage();
-            message.setFrom("liker007@163.com");
+            message.setFrom("ssn.717@163.com");
             message.setTo(email);
-            message.setSubject("Your New Password to Login SMC System");
+            message.setSubject("Your New Password to Login FSD System");
             message.setText("Your New Password >>>> "+ newpassword);
-            message.setCc("liker007@163.com");
+            message.setCc("ssn.717@163.com");
             mailSender.send(message);
 
 //        }catch (Exception e){

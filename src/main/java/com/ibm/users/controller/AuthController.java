@@ -12,7 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import com.ibm.users.constant.Const;
-import com.ibm.users.filters.SmcUserDetailsService;
+import com.ibm.users.filters.FsdUserDetailsService;
 import com.ibm.users.model.AuthRequest;
 import com.ibm.users.model.AuthResponse;
 import com.ibm.users.service.UsersService;
@@ -26,11 +26,10 @@ import static org.springframework.http.HttpStatus.*;
 
 @CrossOrigin
 @RestController
-//@RequestMapping(value = "api/smc/secure", produces = MediaType.APPLICATION_JSON_VALUE) // 可访问api/smc/secure/login
 public class AuthController {
 
   @Autowired
-  private SmcUserDetailsService smcuserDetailsService;
+  private FsdUserDetailsService fsdUserDetailsService;
   @Autowired
   private AuthenticationManager authenticationManager;
   @Autowired
@@ -45,7 +44,7 @@ public class AuthController {
     SecurityContextHolder.getContext().setAuthentication(authentication);
 
     // Reload password post-security so we can generate token
-    UserDetails userDetails = smcuserDetailsService.loadUserByUsername(request.getUsername());
+    UserDetails userDetails = fsdUserDetailsService.loadUserByUsername(request.getUsername());
     
     // login, changepw, logout will update lastupdate column
     if(!(usersService.setLastupdateByUsername(request.getUsername(), new Date())>0)) {

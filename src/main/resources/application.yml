@@ -3,7 +3,6 @@ spring:
     name: FSD-Users
 
   mail: # JavaMailSender config
-    # maillink: http://localhost:8888/securityuser/api/smc/users/confirmed/
     host: smtp.163.com
     port: 465 # mailSenderServer：smtp.163.com，use SSL，prot 465 or 587
     username: ssn.717@163.com

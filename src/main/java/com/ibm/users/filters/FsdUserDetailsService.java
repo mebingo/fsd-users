@@ -12,7 +12,7 @@ import com.ibm.users.entity.Userinfolist;
 import com.ibm.users.service.UsersService;
 
 @Service
-public class SmcUserDetailsService implements UserDetailsService {
+public class FsdUserDetailsService implements UserDetailsService {
 
   @Autowired
   UsersService usersService;
